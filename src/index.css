@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--font-exo-2: "Exo 2", sans-serif;
+	}
+
+	body {
+		font-family: var(--font-exo-2);
+		color: white;
+		background-color: black;
+		overflow: hidden;
+	}
+}
+
+@layer components {
+	.rocket {
+		/* animation: float 2s ease-in-out infinite; */
+	}
+
+	@keyframes float {
+		0% {
+			/* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
+			transform: translatey(0px);
+		}
+		50% {
+			/* box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2); */
+			transform: translatey(-10px);
+		}
+		100% {
+			/* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
+			transform: translatey(0px);
+		}
+	}
+}
