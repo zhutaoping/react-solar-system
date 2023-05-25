@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout";
-import Home from "./page";
 import Mercury from "./pages/mercury/Mercury";
+import Home from "./pages/home/Home";
+import App from "./App";
 
 const router = createBrowserRouter([
 	{
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <Home />,
+				element: <App />,
 			},
 			{
 				path: "mercury",

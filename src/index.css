@@ -18,6 +18,10 @@
 }
 
 @layer components {
+	.sun-vid-wrapper {
+		/* rotate: 90deg; */
+	}
+
 	.rocket {
 		/* animation: float 2s ease-in-out infinite; */
 	}

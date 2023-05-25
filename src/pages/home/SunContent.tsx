@@ -8,13 +8,11 @@ export default function SunContent() {
 			initial="hidden"
 			animate="show"
 			exit="exit"
-			className="space-y-1"
+			className="space-y-1 ml-0 p-4"
 		>
-			<motion.h2
-				variants={contentItem}
-				className="text-4xl font-display overflow-hidden"
-			>
+			<motion.h2 variants={contentItem} className="text-4xl font-display mb-4">
 				Sun
+				<span className="ml-4 text-xl">star</span>
 			</motion.h2>
 			<motion.p variants={contentItem} className="text-lg">
 				Accounts for 99.86% of the mass in the solar system

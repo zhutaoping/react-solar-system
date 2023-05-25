@@ -26,12 +26,6 @@ export default function Dock() {
 	const { selectedPlanet, setSelectedPlanet } = usePlanetStore();
 	const [scope, animate] = useAnimate();
 
-	// useEffect(() => {
-	// 	// This "li" selector will only select children
-	// 	// of the element that receives `scope`.
-	// 	animate("span", { scale: 1.2 });
-	// });
-
 	const mouseY = useMotionValue(Infinity);
 
 	return (
@@ -41,7 +35,7 @@ export default function Dock() {
 					mouseY.set(e.pageY);
 				}}
 				onMouseLeave={() => mouseY.set(Infinity)}
-				className="absolute top-1/2 -translate-y-1/2 right-2 flex flex-col  items-end rounded-2xl  p-4"
+				className="absolute xl:top-1/2 xl:-translate-y-1/2 xl:right-2 flex xl:flex-col xl:items-end rounded-2xl p-4 bottom-2"
 			>
 				{planets.map((p) => (
 					<PlanetIcon
@@ -58,7 +52,7 @@ export default function Dock() {
 				<motion.span
 					variants={float}
 					animate="animate"
-					className="rocket absolute bottom-8 right-8"
+					className="hidden sm:block rocket absolute bottom-8 right-8"
 					layoutId="rocket"
 				>
 					🚀
@@ -78,7 +72,6 @@ const float: Variants = {
 			},
 			repeat: Infinity,
 			duration: 2,
-			repeatType: "reverse",
 			ease: "easeInOut",
 		},
 	},

@@ -4,17 +4,18 @@ import { videoVariants } from "../../aniVariants";
 
 export default function SunVideo() {
 	return (
-		<motion.video
-			variants={videoVariants}
-			initial="enter"
-			animate="center"
-			exit="exit"
-			className="h-full object-cover"
-			src={sunVideo}
-			autoPlay
-			muted
-			loop
-			id="myVideo"
-		/>
+		<div className="sun-vid-wrapper h-full rotate-90 lg:rotate-0">
+			<motion.video
+				variants={videoVariants}
+				initial="enter"
+				animate="center"
+				exit="exit"
+				className="h-full"
+				src={sunVideo}
+				autoPlay
+				muted
+				loop
+			/>
+		</div>
 	);
 }

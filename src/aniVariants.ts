@@ -1,7 +1,7 @@
 export const videoVariants = {
 	enter: {
 		opacity: 0,
-		x: -700,
+		x: -500,
 	},
 	center: {
 		opacity: 1,
@@ -10,8 +10,25 @@ export const videoVariants = {
 	},
 	exit: {
 		opacity: 0,
-		x: -700,
-		transition: { type: "tween", duration: 0.5, ease: "easeIn" },
+		x: -1000,
+		transition: { type: "tween", duration: 0.3, ease: "easeIn" },
+	},
+};
+
+export const videoFromTopVariants = {
+	enter: {
+		opacity: 0,
+		y: -500,
+	},
+	center: {
+		opacity: 1,
+		y: 0,
+		transition: { type: "tween", duration: 1, ease: "easeOut" },
+	},
+	exit: {
+		opacity: 0,
+		y: -1000,
+		transition: { type: "tween", duration: 0.3, ease: "easeIn" },
 	},
 };
 
