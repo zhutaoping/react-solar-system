@@ -1,8 +1,14 @@
+import { motion } from "framer-motion";
 import SunVideo from "../../assets/videos/sun-clip.mp4";
+import { videoVariants } from "../../aniVariants";
 
 export default function MercuryVideo() {
 	return (
-		<video
+		<motion.video
+			variants={videoVariants}
+			initial="enter"
+			animate="center"
+			exit="exit"
 			className="h-full object-cover"
 			src={SunVideo}
 			autoPlay
@@ -12,19 +18,3 @@ export default function MercuryVideo() {
 		/>
 	);
 }
-
-const variants = {
-	enter: {
-		x: -500,
-	},
-	center: {
-		zIndex: 10,
-		x: 0,
-		opacity: 1,
-	},
-	exit: {
-		zIndex: 0,
-		x: -500,
-		opacity: 0,
-	},
-};

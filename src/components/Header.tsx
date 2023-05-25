@@ -8,7 +8,7 @@ export default function Header() {
 
 	return (
 		<div
-			className="fixed right-12 text-4xl py-4"
+			className="fixed right-8 text-4xl py-4"
 			onClick={() => setSelectedPlanet("")}
 		>
 			<Link to="/" className="flex gap-2 items-center">
