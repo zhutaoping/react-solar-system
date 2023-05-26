@@ -24,7 +24,7 @@ export default function PlanetIcon({
   //* distance = mouseMove minus the center of the icon
   const distance = useTransform(mouseMove, val => {
     //* nullish coalescing operator: null and undefined
-    //* not falsy: false, 0, NaN, ""(empty string)
+    //* not includes falsy: false, 0, NaN, ""(empty string)
     if (isXL) {
       const bounds = ref.current?.getBoundingClientRect() ?? { y: 0, width: 0 }
 
