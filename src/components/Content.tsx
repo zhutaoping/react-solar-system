@@ -19,8 +19,8 @@ export default function Content({ content, isSun }: Props) {
       initial="hidden"
       animate="show"
       exit="exit"
-      className={`space-y-1 p-6 xs:-translate-y-full xl:translate-y-0 ${
-        isSun ? 'sm:-translate-y-1/2' : 'sm:translate-y-0'
+      className={`space-y-1 p-6 xs:-translate-y-full ${
+        isSun ? 'sm:-translate-y-1/2 lg:translate-y-0' : 'sm:translate-y-0'
       }`}
     >
       <motion.h2 variants={contentItem} className="mb-4 font-display text-4xl">
