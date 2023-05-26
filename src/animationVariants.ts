@@ -1,3 +1,5 @@
+import { Variants } from "framer-motion";
+
 export const videoVariants = {
 	enter: {
 		opacity: 0,
@@ -71,6 +73,21 @@ export const contentItem = {
 		transition: {
 			duration: 0.2,
 			ease: "easeIn",
+		},
+	},
+};
+
+export const floatVariants: Variants = {
+	animate: {
+		scale: 1.5,
+		y: [0, 10, 0],
+		transition: {
+			scale: {
+				duration: 0.2,
+			},
+			repeat: Infinity,
+			duration: 2,
+			ease: "easeInOut",
 		},
 	},
 };

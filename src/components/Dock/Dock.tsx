@@ -1,4 +1,4 @@
-import { useMotionValue, motion, useAnimate, Variants } from "framer-motion";
+import { useMotionValue, motion, useAnimate } from "framer-motion";
 import { usePlanetStore } from "../../store/PlanetStore";
 import PlanetIcon from "./PlanetIcon";
 
@@ -10,6 +10,7 @@ import imgJupiter from "../../assets/images/jupiter.png";
 import imgSaturn from "../../assets/images/saturn.png";
 import imgUranus from "../../assets/images/uranus.png";
 import imgNeptune from "../../assets/images/neptune.png";
+import { floatVariants } from "../../animationVariants";
 
 const planets = [
 	{ name: "mercury", img: imgMercury },
@@ -50,7 +51,7 @@ export default function Dock() {
 			</ul>
 			{selectedPlanet === "" ? (
 				<motion.span
-					variants={float}
+					variants={floatVariants}
 					animate="animate"
 					className="hidden sm:block rocket absolute bottom-8 right-8"
 					layoutId="rocket"
@@ -61,18 +62,3 @@ export default function Dock() {
 		</nav>
 	);
 }
-
-const float: Variants = {
-	animate: {
-		scale: 1.5,
-		y: [0, 10, 0],
-		transition: {
-			scale: {
-				duration: 0.2,
-			},
-			repeat: Infinity,
-			duration: 2,
-			ease: "easeInOut",
-		},
-	},
-};
