@@ -39,7 +39,7 @@ export default function Dock() {
         <motion.span
           variants={floatVariants}
           animate="animate"
-          className="rocket absolute bottom-9 right-8 hidden lg:block"
+          className="rocket absolute bottom-9 right-8 hidden sm:block"
           layoutId="rocket"
         >
           🚀

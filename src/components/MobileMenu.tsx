@@ -11,7 +11,12 @@ export default function MobileMenu() {
             key={p.name}
           >
             <Link to={`/${p.name}`}>
-              <img width={50} src={p.img} alt={`Picture of ${p.name}`} />
+              <img
+                className="bg-transparent"
+                width={50}
+                src={p.img}
+                alt={`Picture of ${p.name}`}
+              />
             </Link>
           </li>
         ))}

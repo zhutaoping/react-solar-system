@@ -1,6 +1,6 @@
 import { useRef } from 'react'
-import { MotionValue, motion, useSpring, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { MotionValue, motion, useSpring, useTransform } from 'framer-motion'
 
 interface Props {
   isXL: boolean

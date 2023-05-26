@@ -15,6 +15,8 @@ export const videoVariants = {
     transition: { type: 'tween', duration: 1, ease: 'easeOut' },
   },
   exit: {
+    // scale: 1.2,
+    // rotate: -10,
     opacity: 0,
     x: -1000,
     transition: { type: 'tween', duration: 0.3, ease: 'easeIn' },

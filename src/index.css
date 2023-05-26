@@ -18,4 +18,11 @@
 }
 
 @layer components {
+  .sun-img {
+    /* transition: all 1s ease-in-out; */
+  }
+
+  .sun-img.expanded {
+    /* transform: translate(10px, -100px); */
+  }
 }
