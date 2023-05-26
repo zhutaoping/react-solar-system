@@ -9,8 +9,6 @@ export default function App() {
 
 	return (
 		<div className="App">
-			{/* <Header /> */}
-			{/* {isXL && <Dock />} */}
 			<AnimatePresence mode="wait">
 				<Routes location={location} key={location.pathname}>
 					<Route path="/" element={<Layout />}>

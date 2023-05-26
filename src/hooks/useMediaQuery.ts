@@ -32,7 +32,7 @@ export function useMediaQuery(query: string) {
 	return matches;
 }
 
-// const isSmall = useMediaQuery("(min-width: 480px)");
-// const isMedium = useMediaQuery("(min-width: 7680px)");
-// const isLarge = useMediaQuery("(min-width: 1024px)");
-// const isXL = useMediaQuery("(min-width: 1280px)");
+// const isSmall = useMediaQuery("(max-width: 480px)");
+// const isMedium = useMediaQuery("(max-width: 7680px)");
+// const isLarge = useMediaQuery("(max-width: 1024px)");
+// const isXL = useMediaQuery("(max-width: 1280px)");
