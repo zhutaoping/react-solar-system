@@ -2,7 +2,7 @@ import MainLayout from '../../components/MainLayout'
 import MercuryContent from './MercuryContent'
 import MercuryVideo from './MercuryVideo'
 
-export default function Mercury() {
+export default function MercuryPage() {
   return (
     <MainLayout>
       <MercuryVideo />

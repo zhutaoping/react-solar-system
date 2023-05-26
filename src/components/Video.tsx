@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useMediaQuery } from '../hooks/useMediaQuery'
-import { videoFromTopVariants, videoVariants } from '../animationVariants'
+import { videoFromTopVariants, videoVariants } from '../lib/animationVariants'
 
 interface Props {
   src: string

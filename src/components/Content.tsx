@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { contentItem, contentVariants } from '../animationVariants'
+import { contentItem, contentVariants } from '../lib/animationVariants'
 
 interface Content {
   heading: string
