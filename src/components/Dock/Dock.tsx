@@ -11,6 +11,7 @@ import imgJupiter from '../../assets/images/jupiter.png'
 import imgSaturn from '../../assets/images/saturn.png'
 import imgUranus from '../../assets/images/uranus.png'
 import imgNeptune from '../../assets/images/neptune.png'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
 
 const planets = [
   { name: 'mercury', img: imgMercury },
@@ -25,22 +26,27 @@ const planets = [
 
 export default function Dock() {
   const { selectedPlanet, setSelectedPlanet } = usePlanetStore()
-
-  const mouseY = useMotionValue(Infinity)
+  const isXL = useMediaQuery('(min-width: 1280px)')
+  const mouseMove = useMotionValue(Infinity)
 
   return (
     <nav>
       <ul
         onMouseMove={e => {
-          mouseY.set(e.pageY)
+          if (isXL) {
+            mouseMove.set(e.pageY)
+          } else {
+            mouseMove.set(e.pageX)
+          }
         }}
-        onMouseLeave={() => mouseY.set(Infinity)}
-        className="absolute bottom-2 flex rounded-2xl p-4 xl:right-2 xl:top-1/2 xl:-translate-y-1/2 xl:flex-col xl:items-end"
+        onMouseLeave={() => mouseMove.set(Infinity)}
+        className="absolute bottom-2 right-12 z-10 flex items-end rounded-2xl p-4 xl:right-2 xl:top-1/2 xl:-translate-y-1/2 xl:flex-col"
       >
         {planets.map(p => (
           <PlanetIcon
+            isXL={isXL}
             key={p.name}
-            mouseY={mouseY}
+            mouseMove={mouseMove}
             planet={p.name}
             img={p.img}
             selectedPlanet={selectedPlanet}
@@ -52,7 +58,7 @@ export default function Dock() {
         <motion.span
           variants={floatVariants}
           animate="animate"
-          className="rocket absolute bottom-8 right-8 hidden sm:block"
+          className="rocket absolute bottom-9 right-8 hidden lg:block"
           layoutId="rocket"
         >
           🚀

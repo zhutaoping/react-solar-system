@@ -2,10 +2,14 @@ import { Variants } from 'framer-motion'
 
 export const videoVariants = {
   enter: {
+    scale: 1.5,
+    rotate: -30,
     opacity: 0,
     x: -500,
   },
   center: {
+    scale: 1,
+    rotate: 0,
     opacity: 1,
     x: 0,
     transition: { type: 'tween', duration: 1, ease: 'easeOut' },

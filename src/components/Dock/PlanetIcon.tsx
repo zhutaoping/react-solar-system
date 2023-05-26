@@ -3,7 +3,8 @@ import { MotionValue, motion, useSpring, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 interface Props {
-  mouseY: MotionValue
+  isXL: boolean
+  mouseMove: MotionValue
   planet: string
   img: string
   selectedPlanet: string
@@ -11,7 +12,8 @@ interface Props {
 }
 
 export default function PlanetIcon({
-  mouseY,
+  isXL,
+  mouseMove,
   planet,
   img,
   selectedPlanet,
@@ -19,12 +21,19 @@ export default function PlanetIcon({
 }: Props) {
   const ref = useRef<HTMLLIElement>(null)
 
-  //* distance = mouseY minus the center of the icon
-  const distance = useTransform(mouseY, val => {
+  //* distance = mouseMove minus the center of the icon
+  const distance = useTransform(mouseMove, val => {
     //* nullish coalescing operator: null and undefined
     //* not falsy: false, 0, NaN, ""(empty string)
-    const bounds = ref.current?.getBoundingClientRect() ?? { y: 0, width: 0 }
-    return val - bounds.y - bounds.width / 2
+    if (isXL) {
+      const bounds = ref.current?.getBoundingClientRect() ?? { y: 0, width: 0 }
+
+      return val - bounds.y - bounds.width / 2
+    } else {
+      const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, height: 0 }
+
+      return val - bounds.x - bounds.height / 2
+    }
   })
 
   const widthSync = useTransform(distance, [-100, 0, 100], [40, 80, 40])
