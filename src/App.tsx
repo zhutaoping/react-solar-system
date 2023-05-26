@@ -4,12 +4,16 @@ import Layout from './Layout'
 import HomePage from './pages/home/HomePage'
 import MercuryPage from './pages/mercury/MercuryPage'
 import VenusPage from './pages/venus/VenusPage'
+import Dock from './components/Dock/Dock'
+import Header from './components/Header'
 
 export default function App() {
   const location = useLocation()
 
   return (
     <div className="App">
+      <Header />
+      <Dock />
       <AnimatePresence initial={false} mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Layout />}>
