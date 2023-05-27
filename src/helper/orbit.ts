@@ -1,3 +1,5 @@
+import './orbit.css'
+
 interface OrbitProps {
   lis: NodeListOf<HTMLElement>
   expanded: boolean
