@@ -16,3 +16,83 @@
     overflow: hidden;
   }
 }
+
+@layer components {
+  .orbit {
+    width: 0;
+    bottom: 0;
+    opacity: 0;
+    aspect-ratio: 1 / 1;
+  }
+
+  .orbit.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+  }
+
+  .orbit ul {
+    display: grid;
+    place-items: center;
+  }
+
+  .orbit li {
+    position: absolute;
+    width: 2rem;
+    transition: all 0.2s linear;
+  }
+  .orbit li.expanded {
+    opacity: 1;
+    width: 4rem;
+  }
+  .orbit li.expanded.isSmall {
+    width: 6rem;
+  }
+
+  .orbit li img {
+    width: 100%;
+    animation: pulse 1.5s linear infinite;
+  }
+
+  /* .orbit li:hover > img {
+    animation-play-state: paused;
+  } */
+
+  .orbit li:first-child {
+    transform: translate(var(--x1), var(--y1));
+  }
+  .orbit li:nth-child(2) {
+    transform: translate(var(--x2), var(--y2));
+  }
+  .orbit li:nth-child(3) {
+    transform: translate(var(--x3), var(--y3));
+  }
+  .orbit li:nth-child(4) {
+    transform: translate(var(--x4), var(--y4));
+  }
+  .orbit li:nth-child(5) {
+    transform: translate(var(--x5), var(--y5));
+  }
+  .orbit li:nth-child(6) {
+    transform: translate(var(--x6), var(--y6));
+  }
+  .orbit li:nth-child(7) {
+    transform: translate(var(--x7), var(--y7));
+  }
+  .orbit li:nth-child(8) {
+    transform: translate(var(--x8), var(--y8));
+  }
+
+  @keyframes pulse {
+    0% {
+      scale: 1;
+    }
+    50% {
+      scale: 1.1;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+}

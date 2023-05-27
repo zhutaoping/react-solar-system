@@ -9,6 +9,8 @@ import Header from './components/Header'
 import { useMediaQuery } from './hooks/useMediaQuery'
 import useMeasure from 'react-use-measure'
 import { useEffect, useState } from 'react'
+import EarthPage from './pages/earth/EarthPage'
+import MarsPage from './pages/mars/MarsPage'
 
 export default function App() {
   const location = useLocation()
@@ -34,6 +36,8 @@ export default function App() {
             <Route index element={<HomePage />} />
             <Route path="mercury" element={<MercuryPage />} />
             <Route path="venus" element={<VenusPage />} />
+            <Route path="earth" element={<EarthPage />} />
+            <Route path="mars" element={<MarsPage />} />
           </Route>
         </Routes>
       </AnimatePresence>

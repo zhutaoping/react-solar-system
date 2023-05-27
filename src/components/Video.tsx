@@ -5,17 +5,17 @@ import { videoFromTopVariants, videoVariants } from '../lib/animationVariants'
 interface Props {
   src: string
   isSun?: boolean
+  isMercury?: boolean
 }
 
-export default function MercuryVideo({ src, isSun }: Props) {
-  const isMobile = useMediaQuery('(max-width: 400px)')
+export default function Video({ src, isSun, isMercury }: Props) {
   const underMedium = useMediaQuery('(max-width: 829px)')
 
   return (
     <div
       className={`xs:-translate-y-1/3 sm:translate-y-0 ${
         isSun ? 'rotate-90 md:rotate-0 ' : ''
-      }`}
+      } ${isMercury ? 'scale-90' : ''}`}
     >
       <motion.video
         /**

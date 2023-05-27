@@ -2,24 +2,28 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { planets } from '../constants'
 import { useMediaQuery } from '../hooks/useMediaQuery'
-import orbit from '../helper/orbit'
+import orbiting from '../helper/orbiting'
 
 interface Props {
   expanded: boolean
+  sunEl: HTMLElement
+  refHeader: React.RefObject<HTMLDivElement>
 }
 
-export default function MobileMenu({ expanded }: Props) {
+export default function MobileMenu({ expanded, sunEl, refHeader }: Props) {
   const isSmall = useMediaQuery('(min-width: 640px)')
 
   useEffect(() => {
-    const lis = document.querySelectorAll('ul li') as NodeListOf<HTMLElement>
+    const lis = document.querySelectorAll(
+      '.orbit ul li'
+    ) as NodeListOf<HTMLElement>
 
-    orbit({ lis, expanded, isSmall })
-  }, [expanded, isSmall])
+    orbiting({ lis, sunEl, refHeader, expanded, isSmall })
+  }, [expanded, sunEl, isSmall, refHeader])
 
   return (
     <nav className={`orbit ${expanded ? 'expanded' : 'pointer-events-none'}`}>
-      <ul className={`${expanded && 'expanded'}`}>
+      <ul>
         {planets.map(p => (
           <li className={`${expanded && 'expanded'}`} key={p.name}>
             <Link to={`/${p.name}`}>

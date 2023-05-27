@@ -1,7 +1,7 @@
-import { MouseEvent, useEffect, useState } from 'react'
+import { MouseEvent, useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAnimate } from 'framer-motion'
-import sun from '../assets/images/white-sun.jpg'
+import sun from '../assets/images/white-sun.png'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import { usePlanetStore } from '../store/PlanetStore'
 import MobileMenu from './MobileMenu'
@@ -21,6 +21,8 @@ export default function Header({ height, width }: Props) {
   const underMedium = useMediaQuery('(max-width: 829px)')
   const isMedium = useMediaQuery('(min-width: 830px)')
   const navigate = useNavigate()
+
+  const refHeader = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const client = scope.current.getBoundingClientRect()
@@ -50,7 +52,7 @@ export default function Header({ height, width }: Props) {
       {
         x: posX,
         y: posY,
-        scale: 1.5,
+        scale: isSmall ? 2 : 1.5,
       },
       { duration: 0.1, ease: 'easeInOut' }
     )
@@ -71,7 +73,8 @@ export default function Header({ height, width }: Props) {
 
   return (
     <div
-      className="header absolute bottom-4 left-4 z-10 h-fit py-4 text-4xl md:left-auto md:right-8 md:top-0"
+      ref={refHeader}
+      className="header absolute bottom-4 left-1 z-10 h-fit py-4 text-4xl sm:left-2 md:left-auto md:right-8 md:top-0"
       onClick={e => handleClick(e)}
     >
       {!isMedium && (
@@ -100,7 +103,13 @@ export default function Header({ height, width }: Props) {
           <span className="pb-1">Solar System</span>
         </Link>
       )}
-      {underMedium && <MobileMenu expanded={expanded} />}
+      {underMedium && (
+        <MobileMenu
+          expanded={expanded}
+          sunEl={scope.current}
+          refHeader={refHeader}
+        />
+      )}
     </div>
   )
 }
