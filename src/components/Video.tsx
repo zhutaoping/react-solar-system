@@ -9,6 +9,7 @@ interface Props {
 
 export default function MercuryVideo({ src, isSun }: Props) {
   const isMobile = useMediaQuery('(max-width: 400px)')
+  const underMedium = useMediaQuery('(max-width: 829px)')
 
   return (
     <div
@@ -25,8 +26,8 @@ export default function MercuryVideo({ src, isSun }: Props) {
          ** the component with the isSmall value so that when the
          ** value changes, React will re-render the component.
          */
-        key={isMobile.toString()}
-        variants={isMobile && !isSun ? videoFromTopVariants : videoVariants}
+        key={underMedium.toString()}
+        variants={underMedium && !isSun ? videoFromTopVariants : videoVariants}
         initial="enter"
         animate="center"
         exit="exit"

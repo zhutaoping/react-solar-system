@@ -1,24 +1,26 @@
-import { Link } from 'react-router-dom'
-import { usePlanetStore } from '../store/PlanetStore'
+import { useAnimate } from 'framer-motion'
+import { MouseEvent, useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import sun from '../assets/images/white-sun.jpg'
 import { useMediaQuery } from '../hooks/useMediaQuery'
-import { useEffect, useState } from 'react'
-import { motion, useAnimate } from 'framer-motion'
+import { usePlanetStore } from '../store/PlanetStore'
+import MobileMenu from './MobileMenu'
 
 interface Props {
-  children: React.ReactNode
   height: number
   width: number
 }
 
-export default function Header({ children, height, width }: Props) {
+export default function Header({ height, width }: Props) {
   const [expanded, setExpanded] = useState(false)
   const [wxy, setWXY] = useState({ width: 0, x: 0, y: 0 })
-  const isMobile = useMediaQuery('(max-width: 400px)')
-  const isMedium = useMediaQuery('(min-width: 830px)')
 
   const { setSelectedPlanet } = usePlanetStore()
   const [scope, animate] = useAnimate()
+  const isSmall = useMediaQuery('(min-width: 640px)')
+  const underMedium = useMediaQuery('(max-width: 829px)')
+  const isMedium = useMediaQuery('(min-width: 830px)')
+  const navigate = useNavigate()
 
   useEffect(() => {
     const client = scope.current.getBoundingClientRect()
@@ -33,43 +35,50 @@ export default function Header({ children, height, width }: Props) {
         {
           x: 0,
           y: 0,
+          scale: 1,
         },
-        { duration: 0.3, ease: 'easeInOut' }
+        { duration: 0.1, ease: 'easeInOut' }
       )
       return
     }
 
     const posX = width / 2 - wxy.width / 2 - wxy.x
-    const posY = height / 3
+    const posY = height / 2 - wxy.width / 2 - wxy.y
 
     animate(
       scope.current,
       {
         x: posX,
-        y: -posY,
+        y: posY,
+        scale: 1.5,
       },
-      { duration: 0.3, ease: 'easeInOut' }
+      { duration: 0.1, ease: 'easeInOut' }
     )
-  }, [expanded, height, width, wxy, isMedium, animate, scope])
+  }, [expanded, height, width, wxy, isMedium, animate, scope, isSmall])
 
-  function handleClick() {
+  function handleClick(e: MouseEvent) {
+    const targetEl = e.target as HTMLElement
+
     if (isMedium) {
       setSelectedPlanet('')
       return
     }
-    setExpanded(!expanded)
+
+    if (expanded && targetEl.classList.contains('sun-img')) navigate('/')
+
+    setExpanded(prev => !prev)
   }
 
   return (
     <div
-      className="header absolute bottom-4 left-4 z-10 py-4 text-4xl md:left-auto md:right-8 md:top-0"
-      onClick={handleClick}
+      className="header absolute bottom-4 left-4 z-10 h-fit py-4 text-4xl md:left-auto md:right-8 md:top-0"
+      onClick={e => handleClick(e)}
     >
       {!isMedium && (
         <nav className="flex items-center gap-2">
           <img
             ref={scope}
-            className={`sun-img bg-transparent ${expanded && 'expanded'}`}
+            className={`sun-img ${expanded && 'expanded'}`}
             src={sun}
             height={50}
             width={50}
@@ -82,7 +91,7 @@ export default function Header({ children, height, width }: Props) {
         <Link to="/" className="flex items-center gap-2">
           <img
             ref={scope}
-            className={`sun-img bg-transparent ${expanded && 'expanded'}`}
+            className={`sun-img ${expanded && 'expanded'}`}
             src={sun}
             height={50}
             width={50}
@@ -91,7 +100,7 @@ export default function Header({ children, height, width }: Props) {
           <span className="pb-1">Solar System</span>
         </Link>
       )}
-      {children}
+      {underMedium && <MobileMenu expanded={expanded} />}
     </div>
   )
 }
