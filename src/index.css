@@ -52,8 +52,12 @@
 
   .orbit li img {
     width: 100%;
-    animation: pulse 2s infinite;
+    animation: pulse 1.5s linear infinite;
   }
+
+  /* .orbit li:hover > img {
+    animation-play-state: paused;
+  } */
 
   .orbit li:first-child {
     transform: translate(var(--x1), var(--y1));

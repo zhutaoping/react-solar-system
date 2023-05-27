@@ -1,6 +1,6 @@
-import { useAnimate } from 'framer-motion'
 import { MouseEvent, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAnimate } from 'framer-motion'
 import sun from '../assets/images/white-sun.jpg'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import { usePlanetStore } from '../store/PlanetStore'
