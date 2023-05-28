@@ -11,6 +11,10 @@ import useMeasure from 'react-use-measure'
 import { useEffect, useState } from 'react'
 import EarthPage from './pages/earth/EarthPage'
 import MarsPage from './pages/mars/MarsPage'
+import NeptunePage from './pages/neptune/NeptunePage'
+import UranusPage from './pages/uranus/UranusPage'
+import JupiterPage from './pages/jupiter/JupiterPage'
+import SaturnPage from './pages/saturn/SaturnPage'
 
 export default function App() {
   const location = useLocation()
@@ -38,6 +42,10 @@ export default function App() {
             <Route path="venus" element={<VenusPage />} />
             <Route path="earth" element={<EarthPage />} />
             <Route path="mars" element={<MarsPage />} />
+            <Route path="jupiter" element={<JupiterPage />} />
+            <Route path="saturn" element={<SaturnPage />} />
+            <Route path="uranus" element={<UranusPage />} />
+            <Route path="neptune" element={<NeptunePage />} />
           </Route>
         </Routes>
       </AnimatePresence>

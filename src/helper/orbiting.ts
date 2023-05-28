@@ -53,6 +53,14 @@ export default function orbiting({
   window.requestAnimationFrame(orbit)
 
   lis.forEach(li => {
+    li.addEventListener('pointerenter', () => {
+      window.cancelAnimationFrame(myReq)
+    })
+
+    li.addEventListener('pointerleave', () => {
+      window.requestAnimationFrame(orbit)
+    })
+
     li.addEventListener('click', () => {
       window.cancelAnimationFrame(myReq)
     })
