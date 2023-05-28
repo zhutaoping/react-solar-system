@@ -29,7 +29,10 @@ export default function App() {
   }, [bounds])
 
   return (
-    <div ref={ref} className="App">
+    <div ref={ref} className="App relative">
+      <div className="stars"></div>
+      <div className="twinkling"></div>
+      <div className="clouds"></div>
       {/* <Header /> and <Dock /> are outside of the <AnimatePresence /> component, so they won't be rendered on page transition. */}
       <Header height={dimensions.height} width={dimensions.width} />
 
