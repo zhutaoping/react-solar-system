@@ -7,7 +7,7 @@ export default function UranusContent() {
     description: [
       'Rotates on its side',
       'Average temperature is -195°C',
-      'A funny name',
+      'Has a funny name',
     ],
   }
   return <Content content={content} />
