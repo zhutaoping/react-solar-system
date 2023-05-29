@@ -1,6 +1,6 @@
-import neptuneVideo from '../../assets/videos/neptune-clip.mp4'
+import neptuneVideo from '../../assets/images/neptune-1080.png'
 import Video from '../../components/Video'
 
 export default function VenusVideo() {
-  return <Video src={neptuneVideo} isNeptune />
+  return <Video src={neptuneVideo} isNeptune isImage />
 }

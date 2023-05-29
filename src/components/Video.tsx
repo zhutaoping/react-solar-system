@@ -1,11 +1,16 @@
 import { motion } from 'framer-motion'
 import { useMediaQuery } from '../hooks/useMediaQuery'
-import { videoFromTopVariants, videoVariants } from '../lib/animationVariants'
+import { videoFromTopVariants, videoVariants } from '../utils/animationVariants'
+import { useEffect, useState } from 'react'
+import useMeasure from 'react-use-measure'
 
 interface Props {
   src: string
   isSun?: boolean
   isMercury?: boolean
+  isVenus?: boolean
+  isEarth?: boolean
+  isMars?: boolean
   isUranus?: boolean
   isNeptune?: boolean
   isImage?: boolean
@@ -17,33 +22,57 @@ export default function Video({
   src,
   isSun,
   isMercury,
-  isNeptune,
-  isUranus,
-  isImage,
+  isVenus,
+  isEarth,
+  isMars,
   isJupiter,
   isSaturn,
+  isUranus,
+  isNeptune,
+  isImage,
 }: Props) {
+  const [animationComplete, setAnimationComplete] = useState(false)
+
   const underMedium = useMediaQuery('(max-width: 829px)')
+  const [ref, bounds] = useMeasure()
+
+  useEffect(() => {
+    console.log('bounds', bounds)
+  }, [bounds])
+
+  const onStart = () => {
+    setAnimationComplete(false)
+  }
+
+  const onComplete = () => {
+    setAnimationComplete(true)
+  }
+
+  const clipValue = 1000
 
   return (
     <div
-      className={`xs:-translate-y-1/3 sm:translate-y-0 ${
-        isSun ? 'rotate-90 md:rotate-0 ' : ''
-      } ${isMercury ? 'scale-90' : ''} ${isJupiter && !underMedium ? '' : ''} ${
-        isUranus ? 'scale-90' : ''
-      } ${isNeptune ? 'scale-90' : ''} ${isSaturn && !underMedium ? '' : ''} 
+      className={`scale-[0.8] xs:-translate-y-1/3 sm:translate-y-0 ${
+        isSun ? 'isSun rotate-90 !scale-100 md:rotate-0' : ''
+      } ${isSaturn ? '!scale-100' : ''}  ${
+        isVenus && animationComplete ? '' : ''
+      } ${isEarth && animationComplete ? '' : ''}  ${
+        isJupiter && !underMedium ? '' : ''
+      } ${isUranus ? '' : ''} ${isNeptune ? '' : ''} ${
+        isSaturn && !underMedium ? '' : ''
+      } 
     `}
     >
       {isImage && (
         <motion.img
           key={isSaturn ? '' : underMedium.toString()}
-          variants={
-            underMedium && !isSun ? videoFromTopVariants : videoVariants
-          }
+          variants={underMedium ? videoFromTopVariants : videoVariants}
           initial="enter"
           animate="center"
           exit="exit"
-          className={`md:h-screen ${isSun ? 'object-cover' : ''}`}
+          onAnimationStart={onStart}
+          onAnimationComplete={onComplete}
+          className={`md:h-screen`}
           src={src}
         />
       )}
@@ -57,6 +86,8 @@ export default function Video({
            ** the component with the isSmall value so that when the
            ** value changes, React will re-render the component.
            */
+          ref={ref}
+          custom={clipValue}
           key={underMedium.toString()}
           variants={
             underMedium && !isSun ? videoFromTopVariants : videoVariants
@@ -64,6 +95,8 @@ export default function Video({
           initial="enter"
           animate="center"
           exit="exit"
+          onAnimationStart={onStart}
+          onAnimationComplete={onComplete}
           className={`md:h-screen ${isSun ? 'object-cover' : ''}`}
           src={src}
           autoPlay

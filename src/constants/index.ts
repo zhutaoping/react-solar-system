@@ -17,3 +17,5 @@ export const planets = [
   { name: 'uranus', img: imgUranus },
   { name: 'neptune', img: imgNeptune },
 ]
+
+export const DEFAULT_COLOR = 'hsl(50deg, 100%, 50%)'

@@ -1,6 +1,6 @@
-import sunVideo from "../../assets/videos/sun-clip.mp4";
-import Video from "../../components/Video";
+import sunVideo from '../../assets/videos/sun-clip-nobk.mp4'
+import Video from '../../components/Video'
 
 export default function SunVideo() {
-	return <Video src={sunVideo} isSun />;
+  return <Video src={sunVideo} isSun />
 }

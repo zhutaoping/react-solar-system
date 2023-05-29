@@ -39,7 +39,7 @@ export default function Header({ height, width }: Props) {
           y: 0,
           scale: 1,
         },
-        { duration: 0.1, ease: 'easeInOut' }
+        { duration: 0.7, ease: 'easeInOut' }
       )
       return
     }

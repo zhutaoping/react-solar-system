@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { planets } from '../constants'
 import { useMediaQuery } from '../hooks/useMediaQuery'
-import orbiting from '../helper/orbiting'
+import orbiting from '../utils/orbiting'
 
 interface Props {
   expanded: boolean

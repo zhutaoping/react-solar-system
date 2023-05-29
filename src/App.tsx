@@ -15,6 +15,7 @@ import NeptunePage from './pages/neptune/NeptunePage'
 import UranusPage from './pages/uranus/UranusPage'
 import JupiterPage from './pages/jupiter/JupiterPage'
 import SaturnPage from './pages/saturn/SaturnPage'
+import Sparkles from './components/sparkle/Sparkles'
 
 export default function App() {
   const location = useLocation()
@@ -30,9 +31,8 @@ export default function App() {
 
   return (
     <div ref={ref} className="App relative">
+      {/* <div className="twinkling"></div> */}
       <div className="stars"></div>
-      <div className="twinkling"></div>
-      <div className="clouds"></div>
       {/* <Header /> and <Dock /> are outside of the <AnimatePresence /> component, so they won't be rendered on page transition. */}
       <Header height={dimensions.height} width={dimensions.width} />
 

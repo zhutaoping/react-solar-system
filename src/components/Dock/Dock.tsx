@@ -1,6 +1,6 @@
 import { useMotionValue, motion } from 'framer-motion'
 import { usePlanetStore } from '../../store/PlanetStore'
-import { floatVariants } from '../../lib/animationVariants'
+import { floatVariants } from '../../utils/animationVariants'
 import PlanetIcon from './PlanetIcon'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { planets } from '../../constants'
