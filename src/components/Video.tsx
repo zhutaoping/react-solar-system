@@ -54,13 +54,7 @@ export default function Video({
     <div
       className={`scale-[0.8] xs:-translate-y-1/3 sm:translate-y-0 ${
         isSun ? 'isSun rotate-90 !scale-100 md:rotate-0' : ''
-      } ${isSaturn ? '!scale-100' : ''}  ${
-        isVenus && animationComplete ? '' : ''
-      } ${isEarth && animationComplete ? '' : ''}  ${
-        isJupiter && !underMedium ? '' : ''
-      } ${isUranus ? '' : ''} ${isNeptune ? '' : ''} ${
-        isSaturn && !underMedium ? '' : ''
-      } 
+      } ${isSaturn ? '!scale-100' : ''}
     `}
     >
       {isImage && (

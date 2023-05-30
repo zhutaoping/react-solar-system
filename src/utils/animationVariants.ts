@@ -4,14 +4,12 @@ export const videoVariants = {
   enter: {
     scale: 1.5,
     rotate: -30,
-    opacity: 0,
     x: -500,
     clipPath: 'circle(500px at center)',
   },
   center: (clipValue: number) => ({
     scale: 1,
     rotate: 0,
-    opacity: 1,
     x: 0,
     clipPath: `circle(${clipValue}px at center)`,
     transition: { type: 'tween', duration: 1, ease: 'easeOut' },
@@ -19,7 +17,6 @@ export const videoVariants = {
   exit: {
     // scale: 1.2,
     // rotate: -10,
-    opacity: 0,
     x: -1000,
     clipPath: 'circle(500px at center)',
     transition: { type: 'tween', duration: 0.3, ease: 'easeIn' },
@@ -28,7 +25,7 @@ export const videoVariants = {
 
 export const videoFromTopVariants = {
   enter: {
-    opacity: 0,
+    opacity: 1,
     y: -500,
     clipPath: 'circle(500px at center)',
   },
