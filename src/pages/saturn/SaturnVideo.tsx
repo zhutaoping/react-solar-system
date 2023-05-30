@@ -1,6 +1,9 @@
 import Video from '../../components/Video'
-import saturnFeat from '../../assets/images/saturn-1080.png'
+import saturnMedia from '/assets/images/saturn-720-tiny.webp'
 
 export default function SaturnVideo() {
-  return <Video src={saturnFeat} isImage isSaturn />
+  const media = new Image()
+  media.src = saturnMedia
+  media.alt = 'Saturn'
+  return <Video media={media} isImage isSaturn />
 }

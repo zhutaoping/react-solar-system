@@ -58,8 +58,8 @@ export default function PlanetIcon({
         <img
           src={img}
           className="h-full w-full object-contain"
-          height={500}
-          width={500}
+          // height={500}
+          // width={500}
           alt={`Picture of the ${planet}}`}
         />
       </Link>

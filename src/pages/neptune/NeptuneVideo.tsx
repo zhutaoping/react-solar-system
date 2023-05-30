@@ -1,6 +1,9 @@
-import neptuneVideo from '../../assets/images/neptune-720.png'
+import neptuneMedia from '/assets/images/neptune-720-tiny.webp'
 import Video from '../../components/Video'
 
 export default function VenusVideo() {
-  return <Video src={neptuneVideo} isImage />
+  const media = new Image()
+  media.src = neptuneMedia
+  media.alt = 'Neptune'
+  return <Video media={media} isImage />
 }

@@ -4,7 +4,7 @@ import { useAnimate } from 'framer-motion'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import { usePlanetStore } from '../store/PlanetStore'
 import MobileMenu from './MobileMenu'
-import sun from '../assets/images/white-sun.png'
+import sun from '/assets/images/white-sun.webp'
 
 interface Props {
   height: number
@@ -74,7 +74,7 @@ export default function Header({ height, width }: Props) {
   return (
     <div
       ref={refHeader}
-      className="header absolute bottom-10 left-4 z-10 h-fit py-4 text-4xl md:left-auto md:right-8 md:top-0"
+      className="header absolute bottom-4 left-4 z-10 h-fit py-4 text-4xl md:left-auto md:right-8 md:top-0"
       onClick={e => handleClick(e)}
     >
       {!isMedium && (

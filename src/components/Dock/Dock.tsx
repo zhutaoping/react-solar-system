@@ -29,7 +29,7 @@ export default function Dock() {
             key={p.name}
             mouseMove={mouseMove}
             planet={p.name}
-            img={p.img}
+            img={p.icon}
             selectedPlanet={selectedPlanet}
             setSelectedPlanet={setSelectedPlanet}
           />

@@ -30,7 +30,7 @@ export default function MobileMenu({ expanded, sunEl, refHeader }: Props) {
               <img
                 className=""
                 width={50}
-                src={p.img}
+                src={p.icon}
                 alt={`Picture of ${p.name}`}
               />
             </Link>

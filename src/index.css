@@ -18,20 +18,6 @@
 }
 
 @layer components {
-  .layout {
-    height: 100svh;
-  }
-
-  .stars,
-  .twinkling,
-  .clouds {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
   .isSun {
     clip-path: circle(950px at 0px 100px) !important;
   }
@@ -39,15 +25,23 @@
     clip-path: none !important;
   }
 
+  .stars,
+  .twinkling {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
   .stars {
-    background: #000 url(./src/assets/images/stars.png);
+    background: #000 url(/assets/images/stars.webp);
     background-size: cover;
     z-index: -2;
   }
 
   .twinkling {
-    background: transparent url(./src/assets/images/twinkling.png) repeat top
-      center;
+    background: transparent url(/assets/images/twinkling.png) repeat top center;
     z-index: -1;
     animation: move-twink-back 500s linear infinite;
   }

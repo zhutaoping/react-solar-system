@@ -3,13 +3,14 @@ import { useMediaQuery } from '../hooks/useMediaQuery'
 import { videoFromTopVariants, videoVariants } from '../utils/animationVariants'
 
 interface Props {
-  src: string
+  src?: string
+  media?: HTMLImageElement
   isSun?: boolean
   isImage?: boolean
   isSaturn?: boolean
 }
 
-export default function Video({ src, isSun, isSaturn, isImage }: Props) {
+export default function Video({ media, src, isSun, isSaturn, isImage }: Props) {
   const underMedium = useMediaQuery('(max-width: 829px)')
 
   return (
@@ -27,7 +28,8 @@ export default function Video({ src, isSun, isSaturn, isImage }: Props) {
           animate="center"
           exit="exit"
           className={`md:h-screen ${isSaturn ? 'isSaturn' : ''}`}
-          src={src}
+          src={media?.src}
+          alt={media?.alt}
         />
       )}
       {!isImage && (
