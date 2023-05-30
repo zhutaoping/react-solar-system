@@ -18,6 +18,10 @@
 }
 
 @layer components {
+  .layout {
+    height: 100svh;
+  }
+
   .stars,
   .twinkling,
   .clouds {
