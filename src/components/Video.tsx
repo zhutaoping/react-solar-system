@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import { videoFromTopVariants, videoVariants } from '../utils/animationVariants'
 
+import img from '/assets/images/uranus.webp'
+
 interface Props {
   src?: string
   media?: HTMLImageElement
@@ -51,6 +53,7 @@ export default function Video({ media, src, isSun, isSaturn, isImage }: Props) {
           exit="exit"
           className={`md:h-screen ${isSun ? 'isSun object-cover' : ''}`}
           src={src}
+          poster={img}
           autoPlay
           muted
           loop
