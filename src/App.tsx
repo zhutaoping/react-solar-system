@@ -1,21 +1,20 @@
-import { AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
+import { useMediaQuery } from './hooks/useMediaQuery'
+import useMeasure from 'react-use-measure'
 import Layout from './Layout'
+import Header from './components/Header'
+import Dock from './components/Dock/Dock'
 import HomePage from './pages/home/HomePage'
 import MercuryPage from './pages/mercury/MercuryPage'
 import VenusPage from './pages/venus/VenusPage'
-import Dock from './components/Dock/Dock'
-import Header from './components/Header'
-import { useMediaQuery } from './hooks/useMediaQuery'
-import useMeasure from 'react-use-measure'
-import { useEffect, useState } from 'react'
 import EarthPage from './pages/earth/EarthPage'
 import MarsPage from './pages/mars/MarsPage'
-import NeptunePage from './pages/neptune/NeptunePage'
-import UranusPage from './pages/uranus/UranusPage'
 import JupiterPage from './pages/jupiter/JupiterPage'
 import SaturnPage from './pages/saturn/SaturnPage'
-import Sparkles from './components/sparkle/Sparkles'
+import UranusPage from './pages/uranus/UranusPage'
+import NeptunePage from './pages/neptune/NeptunePage'
 
 export default function App() {
   const location = useLocation()
@@ -31,9 +30,11 @@ export default function App() {
 
   return (
     <div ref={ref} className="App relative">
-      {/* <div className="twinkling"></div> */}
+      <div className="twinkling"></div>
       <div className="stars"></div>
+
       {/* <Header /> and <Dock /> are outside of the <AnimatePresence /> component, so they won't be rendered on page transition. */}
+
       <Header height={dimensions.height} width={dimensions.width} />
 
       {isMedium && <Dock />}

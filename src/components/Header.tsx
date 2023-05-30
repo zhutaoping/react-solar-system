@@ -1,10 +1,10 @@
 import { MouseEvent, useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAnimate } from 'framer-motion'
-import sun from '../assets/images/white-sun.png'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import { usePlanetStore } from '../store/PlanetStore'
 import MobileMenu from './MobileMenu'
+import sun from '../assets/images/white-sun.png'
 
 interface Props {
   height: number

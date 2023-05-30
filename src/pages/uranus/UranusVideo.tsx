@@ -1,6 +1,6 @@
-import uranusVideo from '../../assets/images/uranus-1080.png'
+import uranusVideo from '../../assets/images/uranus-720.png'
 import Video from '../../components/Video'
 
 export default function UranusVideo() {
-  return <Video src={uranusVideo} isUranus isImage />
+  return <Video src={uranusVideo} isImage />
 }

@@ -1,9 +1,9 @@
 import { useMotionValue, motion } from 'framer-motion'
 import { usePlanetStore } from '../../store/PlanetStore'
 import { floatVariants } from '../../utils/animationVariants'
-import PlanetIcon from './PlanetIcon'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
-import { planets } from '../../constants'
+import { PLANETS } from '../../constants'
+import PlanetIcon from './PlanetIcon'
 
 export default function Dock() {
   const { selectedPlanet, setSelectedPlanet } = usePlanetStore()
@@ -23,7 +23,7 @@ export default function Dock() {
         onMouseLeave={() => mouseMove.set(Infinity)}
         className="absolute bottom-2 right-12 z-10 flex items-end rounded-2xl p-4 xl:right-2 xl:top-1/2 xl:-translate-y-1/2 xl:flex-col"
       >
-        {planets.map(p => (
+        {PLANETS.map(p => (
           <PlanetIcon
             isXL={isXL}
             key={p.name}

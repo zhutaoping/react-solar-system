@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { contentItem, contentVariants } from '../utils/animationVariants'
-import Sparkles from './sparkle/Sparkles'
 
 interface Content {
   heading: string

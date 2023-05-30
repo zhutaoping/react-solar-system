@@ -7,7 +7,7 @@ import imgSaturn from '../assets/images/saturn.png'
 import imgUranus from '../assets/images/uranus.png'
 import imgNeptune from '../assets/images/neptune.png'
 
-export const planets = [
+export const PLANETS = [
   { name: 'mercury', img: imgMercury },
   { name: 'venus', img: imgVenus },
   { name: 'earth', img: imgEarth },

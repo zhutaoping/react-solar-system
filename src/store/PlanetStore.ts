@@ -1,11 +1,11 @@
-import { create } from "zustand";
+import { create } from 'zustand'
 
 interface PlanetStore {
-	selectedPlanet: string;
-	setSelectedPlanet: (planet: string) => void;
+  selectedPlanet: string
+  setSelectedPlanet: (planet: string) => void
 }
 
-export const usePlanetStore = create<PlanetStore>()((set) => ({
-	selectedPlanet: "",
-	setSelectedPlanet: (planet) => set({ selectedPlanet: planet }),
-}));
+export const usePlanetStore = create<PlanetStore>()(set => ({
+  selectedPlanet: '',
+  setSelectedPlanet: planet => set({ selectedPlanet: planet }),
+}))

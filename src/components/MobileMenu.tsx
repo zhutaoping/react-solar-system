@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { planets } from '../constants'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import orbiting from '../utils/orbiting/orbiting'
+import { PLANETS } from '../constants'
 
 interface Props {
   expanded: boolean
@@ -24,7 +24,7 @@ export default function MobileMenu({ expanded, sunEl, refHeader }: Props) {
   return (
     <nav className={`orbit ${expanded ? 'expanded' : 'pointer-events-none'}`}>
       <ul>
-        {planets.map(p => (
+        {PLANETS.map(p => (
           <li className={`${expanded && 'expanded'}`} key={p.name}>
             <Link to={`/${p.name}`}>
               <img

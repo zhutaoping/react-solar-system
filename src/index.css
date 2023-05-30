@@ -22,27 +22,18 @@
   .twinkling,
   .clouds {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     display: block;
   }
 
   .isSun {
-    clip-path: circle(1000px at 0px 0px) !important;
+    clip-path: circle(950px at 0px 100px) !important;
   }
-  /* .clip-mercury {
-    clip-path: circle(379px at center);
+  .isSaturn {
+    clip-path: none !important;
   }
-  .clip-venus {
-    clip-path: circle(345px at center);
-  }
-  .clip-earth {
-    clip-path: circle(335px at center);
-  } */
 
   .stars {
     background: #000 url(./src/assets/images/stars.png);
@@ -66,43 +57,6 @@
     }
   }
 
-  @keyframes move-clouds-back {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 10000px 0;
-    }
-  }
-
   @media (prefers-reduced-motion: no-preference) {
-    .sparkle-wrapper {
-      animation: comeInOut 700ms forwards;
-    }
-
-    .sparkle-svg {
-      animation: spin 1000ms linear;
-    }
-  }
-
-  @keyframes comeInOut {
-    0% {
-      transform: scale(0);
-    }
-    50% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0);
-    }
-  }
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(180deg);
-    }
   }
 }
