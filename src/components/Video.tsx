@@ -27,7 +27,7 @@ export default function Video({ media, src, isSun, isSaturn, isImage }: Props) {
           initial="enter"
           animate="center"
           exit="exit"
-          className={`md:h-screen ${isSaturn ? 'isSaturn' : ''}`}
+          className={`object-contain md:h-screen ${isSaturn ? 'isSaturn' : ''}`}
           src={media?.src}
           alt={media?.alt}
         />

@@ -18,7 +18,7 @@ import NeptunePage from './pages/neptune/NeptunePage'
 
 export default function App() {
   const location = useLocation()
-  const isMedium = useMediaQuery('(min-width: 830px)')
+  const isMedium = useMediaQuery('(min-width: 768px)')
   const [dimensions, setDimensions] = useState({ height: 0, width: 0 })
 
   const [ref, bounds] = useMeasure()

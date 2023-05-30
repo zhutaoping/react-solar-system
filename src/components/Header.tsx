@@ -18,8 +18,8 @@ export default function Header({ height, width }: Props) {
   const { setSelectedPlanet } = usePlanetStore()
   const [scope, animate] = useAnimate()
   const isSmall = useMediaQuery('(min-width: 640px)')
-  const underMedium = useMediaQuery('(max-width: 829px)')
-  const isMedium = useMediaQuery('(min-width: 830px)')
+  const underMedium = useMediaQuery('(max-width: 767px)')
+  const isMedium = useMediaQuery('(min-width: 768px)')
   const navigate = useNavigate()
 
   const refHeader = useRef<HTMLDivElement>(null)
@@ -66,7 +66,10 @@ export default function Header({ height, width }: Props) {
       return
     }
 
-    if (expanded && targetEl.classList.contains('sun-img')) navigate('/')
+    if (expanded && targetEl.classList.contains('sun-img')) {
+      setSelectedPlanet('')
+      navigate('/')
+    }
 
     setExpanded(prev => !prev)
   }
@@ -74,7 +77,7 @@ export default function Header({ height, width }: Props) {
   return (
     <div
       ref={refHeader}
-      className="header absolute bottom-4 left-4 z-10 h-fit py-4 text-4xl md:left-auto md:right-8 md:top-0"
+      className="header absolute bottom-4 left-4 z-10 h-fit py-4 text-4xl md:left-auto md:right-8 md:top-0 md:text-2xl xl:text-4xl"
       onClick={e => handleClick(e)}
     >
       {!isMedium && (

@@ -5,7 +5,7 @@ export default {
     extend: {
       screens: {
         xs: '480px',
-        md: '830px',
+        // md: '830px',
       },
       fontFamily: {
         display: ['var(--font-exo-2)'],

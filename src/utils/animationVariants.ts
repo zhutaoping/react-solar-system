@@ -16,7 +16,7 @@ export const videoVariants = {
   },
   exit: {
     x: -1000,
-    // clipPath: 'circle(500px at center)',
+    clipPath: 'circle(500px at center)',
     transition: { type: 'tween', duration: 0.3, ease: 'easeIn' },
   },
 }
@@ -27,12 +27,12 @@ export const videoFromTopVariants = {
     y: -500,
     clipPath: 'circle(500px at center)',
   },
-  center: (clipValue: number) => ({
+  center: {
     opacity: 1,
     y: 0,
-    clipPath: `circle(${clipValue}px at center)`,
+    clipPath: `circle(400px at center)`,
     transition: { type: 'tween', duration: 1, ease: 'easeOut' },
-  }),
+  },
   exit: {
     opacity: 0,
     y: -1000,

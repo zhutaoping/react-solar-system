@@ -21,7 +21,7 @@ export default function Dock() {
           }
         }}
         onMouseLeave={() => mouseMove.set(Infinity)}
-        className="absolute bottom-2 right-12 z-10 flex items-end rounded-2xl p-4 xl:right-2 xl:top-1/2 xl:-translate-y-1/2 xl:flex-col"
+        className="absolute bottom-0 right-12 z-10 flex items-end rounded-2xl p-4 xl:right-2 xl:top-1/2 xl:-translate-y-1/2 xl:flex-col"
       >
         {PLANETS.map(p => (
           <PlanetIcon
@@ -39,7 +39,7 @@ export default function Dock() {
         <motion.span
           variants={floatVariants}
           animate="animate"
-          className="rocket absolute bottom-9 right-8 hidden sm:block"
+          className="rocket absolute bottom-8 right-8 hidden sm:block"
           layoutId="rocket"
         >
           🚀

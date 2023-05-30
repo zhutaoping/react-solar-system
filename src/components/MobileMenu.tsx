@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import orbiting from '../utils/orbiting/orbiting'
 import { PLANETS } from '../constants'
+import { usePlanetStore } from '../store/PlanetStore'
 
 interface Props {
   expanded: boolean
@@ -12,6 +13,7 @@ interface Props {
 
 export default function MobileMenu({ expanded, sunEl, refHeader }: Props) {
   const isSmall = useMediaQuery('(min-width: 640px)')
+  const { setSelectedPlanet } = usePlanetStore()
 
   useEffect(() => {
     const lis = document.querySelectorAll(
@@ -25,7 +27,11 @@ export default function MobileMenu({ expanded, sunEl, refHeader }: Props) {
     <nav className={`orbit ${expanded ? 'expanded' : 'pointer-events-none'}`}>
       <ul>
         {PLANETS.map(p => (
-          <li className={`${expanded && 'expanded'}`} key={p.name}>
+          <li
+            className={`${expanded && 'expanded'}`}
+            key={p.name}
+            onClick={() => setSelectedPlanet(p.name || '')}
+          >
             <Link to={`/${p.name}`}>
               <img
                 className=""
