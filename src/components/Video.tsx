@@ -12,8 +12,6 @@ interface Props {
 }
 
 export default function Video({ media, src, isSun, isSaturn, isImage }: Props) {
-  const underMedium = useMediaQuery('(max-width: 829px)')
-
   const [isPortrait, setIsPortrait] = useState(false)
   const checkPortrait = useMediaQuery('(orientation:portrait)')
 
