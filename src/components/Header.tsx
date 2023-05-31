@@ -14,11 +14,17 @@ interface Props {
 export default function Header({ height, width }: Props) {
   const [expanded, setExpanded] = useState(false)
   const [wxy, setWXY] = useState({ width: 0, x: 0, y: 0 })
+  const [isPortrait, setIsPortrait] = useState(false)
+
+  const checkPortrait = useMediaQuery('(orientation:portrait)')
+
+  useEffect(() => {
+    setIsPortrait(checkPortrait)
+  }, [checkPortrait])
 
   const { setSelectedPlanet } = usePlanetStore()
   const [scope, animate] = useAnimate()
   const isSmall = useMediaQuery('(min-width: 640px)')
-  const underMedium = useMediaQuery('(max-width: 767px)')
   const isMedium = useMediaQuery('(min-width: 768px)')
   const navigate = useNavigate()
 
@@ -30,7 +36,7 @@ export default function Header({ height, width }: Props) {
   }, [scope])
 
   useEffect(() => {
-    if (isMedium) return
+    if (!isPortrait) return
     if (!expanded) {
       animate(
         scope.current,
@@ -61,7 +67,7 @@ export default function Header({ height, width }: Props) {
   function handleClick(e: MouseEvent) {
     const targetEl = e.target as HTMLElement
 
-    if (isMedium) {
+    if (!isPortrait) {
       setSelectedPlanet('')
       return
     }
@@ -77,36 +83,38 @@ export default function Header({ height, width }: Props) {
   return (
     <div
       ref={refHeader}
-      className="header absolute bottom-4 left-4 z-10 h-fit py-4 text-4xl md:left-auto md:right-8 md:top-0 md:text-2xl xl:text-4xl"
+      className="header absolute left-auto right-8 top-0 z-10 h-fit py-4 text-2xl md:text-lg portrait:bottom-0 portrait:left-4 portrait:top-auto"
       onClick={e => handleClick(e)}
     >
-      {!isMedium && (
-        <nav className="flex items-center gap-2">
+      {isPortrait && (
+        <div className="flex items-center gap-2">
           <img
             ref={scope}
             className={`sun-img ${expanded && 'expanded'}`}
             src={sun}
-            height={50}
-            width={50}
+            height={40}
+            width={40}
             alt="The Sun in white light"
           />
           <span className="pb-1">Solar System</span>
-        </nav>
+        </div>
       )}
-      {isMedium && (
+      {!isPortrait && (
         <Link to="/" className="flex items-center gap-2">
           <img
             ref={scope}
-            className={`sun-img ${expanded && 'expanded'}`}
+            className={`sun-img md:scale-75 xl:scale-100 ${
+              expanded && 'expanded'
+            }`}
             src={sun}
-            height={50}
-            width={50}
+            height={40}
+            width={40}
             alt="The Sun in white light"
           />
           <span className="pb-1">Solar System</span>
         </Link>
       )}
-      {underMedium && (
+      {isPortrait && (
         <MobileMenu
           expanded={expanded}
           sunEl={scope.current}

@@ -17,9 +17,15 @@ import UranusPage from './pages/uranus/UranusPage'
 import NeptunePage from './pages/neptune/NeptunePage'
 
 export default function App() {
-  const location = useLocation()
-  const isMedium = useMediaQuery('(min-width: 768px)')
   const [dimensions, setDimensions] = useState({ height: 0, width: 0 })
+  const [isPortrait, setIsPortrait] = useState(false)
+
+  const location = useLocation()
+  const checkPortrait = useMediaQuery('(orientation:portrait)')
+
+  useEffect(() => {
+    setIsPortrait(checkPortrait)
+  }, [checkPortrait])
 
   const [ref, bounds] = useMeasure()
 
@@ -33,11 +39,11 @@ export default function App() {
       <div className="stars"></div>
       <div className="twinkling"></div>
 
-      {/* <Header /> and <Dock /> are outside of the <AnimatePresence /> component, so they won't be rendered on page transition. */}
+      {/* <Header /> and <Dock /> are outside of the <AnimatePresence /> component, so they won't be re-rendered on page transition. */}
 
       <Header height={dimensions.height} width={dimensions.width} />
 
-      {isMedium && <Dock />}
+      {!isPortrait && <Dock />}
       <AnimatePresence initial={false} mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Layout />}>

@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import { videoFromTopVariants, videoVariants } from '../utils/animationVariants'
-
-import img from '/assets/images/uranus.webp'
+import { useEffect, useState } from 'react'
 
 interface Props {
   src?: string
@@ -15,21 +14,28 @@ interface Props {
 export default function Video({ media, src, isSun, isSaturn, isImage }: Props) {
   const underMedium = useMediaQuery('(max-width: 829px)')
 
+  const [isPortrait, setIsPortrait] = useState(false)
+  const checkPortrait = useMediaQuery('(orientation:portrait)')
+
+  useEffect(() => {
+    setIsPortrait(checkPortrait)
+  }, [checkPortrait])
+
   return (
     <div
-      className={`scale-75 xs:-translate-y-1/3 sm:translate-y-0  ${
-        isSun ? 'isSun rotate-90 !scale-100 md:rotate-0' : ''
-      } ${isSaturn ? 'isSaturn !scale-100' : ''} 
+      className={`scale-[70%] xl:scale-[80%] ${
+        isSun ? 'isSun !scale-100 portrait:rotate-90' : ''
+      } ${isSaturn ? 'isSaturn !scale-100 place-self-start' : ''} 
     `}
     >
       {isImage && (
         <motion.img
-          key={isSaturn ? '' : underMedium.toString()}
-          variants={underMedium ? videoFromTopVariants : videoVariants}
+          key={isSaturn ? '' : isPortrait.toString()}
+          variants={isPortrait ? videoFromTopVariants : videoVariants}
           initial="enter"
           animate="center"
           exit="exit"
-          className={`object-contain md:h-screen ${isSaturn ? 'isSaturn' : ''}`}
+          className={`${isSaturn ? 'isSaturn' : ''}`}
           src={media?.src}
           alt={media?.alt}
         />
@@ -44,16 +50,15 @@ export default function Video({ media, src, isSun, isSaturn, isImage }: Props) {
            ** the component with the isSmall value so that when the
            ** value changes, React will re-render the component.
            */
-          key={underMedium.toString()}
-          variants={
-            underMedium && !isSun ? videoFromTopVariants : videoVariants
-          }
+          key={isPortrait.toString()}
+          variants={isPortrait && !isSun ? videoFromTopVariants : videoVariants}
           initial="enter"
           animate="center"
           exit="exit"
-          className={`md:h-screen ${isSun ? 'isSun object-cover' : ''}`}
+          className={`${
+            isSun ? 'isSun h-screen object-cover portrait:h-full' : ''
+          }`}
           src={src}
-          poster={img}
           autoPlay
           muted
           loop

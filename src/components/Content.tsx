@@ -19,21 +19,31 @@ export default function Content({ content, isSun }: Props) {
       initial="hidden"
       animate="show"
       exit="exit"
-      className={`space-y-1 p-6 xs:-translate-y-full ${
-        isSun ? 'sm:-translate-y-1/2 md:translate-y-0' : 'sm:translate-y-0'
-      }`}
+      className="space-y-1 p-6 md:p-0"
     >
-      <motion.h2 variants={contentItem} className="mb-4 font-display text-4xl">
+      <motion.h2
+        variants={contentItem}
+        className="mb-3 font-display text-xl md:text-lg xl:text-xl"
+      >
         {content.heading}
-        <span className="ml-4 text-xl">{content.subheading}</span>
+        <span className="ml-4 text-xs">{content.subheading}</span>
       </motion.h2>
-      <motion.p variants={contentItem} className="text-lg">
+      <motion.p
+        variants={contentItem}
+        className="text-base md:text-sm xl:text-base"
+      >
         {content.description[0]}
       </motion.p>
-      <motion.p variants={contentItem} className="text-lg">
+      <motion.p
+        variants={contentItem}
+        className="text-base md:text-sm xl:text-base"
+      >
         {content.description[1]}
       </motion.p>
-      <motion.p variants={contentItem} className="text-lg">
+      <motion.p
+        variants={contentItem}
+        className="text-base md:text-sm xl:text-base"
+      >
         {content.description[2]}
       </motion.p>
     </motion.article>

@@ -4,7 +4,7 @@ import SunVideo from './SunVideo'
 
 export default function HomePage() {
   return (
-    <MainLayout>
+    <MainLayout isSun>
       <SunVideo />
       <SunContent />
     </MainLayout>
