@@ -62,7 +62,18 @@ export default function Header({ height, width }: Props) {
       },
       { duration: 0.1, ease: 'easeInOut' }
     )
-  }, [expanded, height, width, wxy, isMedium, animate, scope, isSmall])
+  }, [
+    expanded,
+    height,
+    isPortrait,
+    isSmall,
+    scope,
+    width,
+    wxy.width,
+    wxy.x,
+    wxy.y,
+    animate,
+  ])
 
   function handleClick(e: MouseEvent) {
     const targetEl = e.target as HTMLElement
@@ -83,7 +94,9 @@ export default function Header({ height, width }: Props) {
   return (
     <div
       ref={refHeader}
-      className="header absolute left-auto right-8 top-0 z-10 h-fit py-4 text-2xl md:text-lg portrait:bottom-0 portrait:left-4 portrait:top-auto"
+      className={`header absolute left-auto right-8 top-0 z-10 h-fit py-4 text-2xl md:text-lg portrait:bottom-0 portrait:left-4 portrait:top-auto ${
+        isMedium && 'portrait:text-4xl'
+      }`}
       onClick={e => handleClick(e)}
     >
       {isPortrait && (
@@ -92,8 +105,8 @@ export default function Header({ height, width }: Props) {
             ref={scope}
             className={`sun-img ${expanded && 'expanded'}`}
             src={sun}
-            height={40}
-            width={40}
+            height={isMedium ? 50 : 40}
+            width={isMedium ? 50 : 40}
             alt="The Sun in white light"
           />
           <span className="pb-1">Solar System</span>
