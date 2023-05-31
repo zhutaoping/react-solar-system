@@ -4,14 +4,22 @@ import { videoFromTopVariants, videoVariants } from '../utils/animationVariants'
 import { useEffect, useState } from 'react'
 
 interface Props {
-  src?: string
   media?: HTMLImageElement
+  src?: string
+  poster?: string
   isSun?: boolean
   isImage?: boolean
   isSaturn?: boolean
 }
 
-export default function Video({ media, src, isSun, isSaturn, isImage }: Props) {
+export default function Video({
+  media,
+  src,
+  poster,
+  isSun,
+  isSaturn,
+  isImage,
+}: Props) {
   const [isPortrait, setIsPortrait] = useState(false)
   const checkPortrait = useMediaQuery('(orientation:portrait)')
 
@@ -57,9 +65,13 @@ export default function Video({ media, src, isSun, isSaturn, isImage }: Props) {
             isSun ? 'isSun h-screen object-cover portrait:h-full' : ''
           }`}
           src={src}
+          poster={poster}
           autoPlay
           muted
           loop
+          onCanPlayThrough={() => {
+            console.log('can play through')
+          }}
         />
       )}
     </div>
