@@ -5,7 +5,7 @@ export default function JupiterContent() {
     heading: 'Jupiter',
     subheading: 'planet',
     description: [
-      'The biggest planet in solar system',
+      'The biggest planet in the solar system',
       'Has a storm name The Great Red Spot',
       'With no hopes of becoming a star',
     ],

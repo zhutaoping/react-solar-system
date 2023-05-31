@@ -5,7 +5,7 @@ export default function VenusContent() {
     heading: 'Venus',
     subheading: 'planet',
     description: [
-      'The hottest planet in solar system',
+      'The hottest planet in the solar system',
       'The second brightest natural object in the night',
       'Spins the wrong way',
     ],
