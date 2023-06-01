@@ -1,4 +1,4 @@
-import venusVideo from '/assets/videos/venus-720.mp4'
+import venusVideo from '/assets/videos/venus-720.webm'
 import Video from '../../components/Video'
 
 export default function VenusVideo() {
