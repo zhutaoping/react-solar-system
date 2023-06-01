@@ -7,7 +7,7 @@ import iconSaturn from '/assets/images/saturn.png'
 import iconUranus from '/assets/images/uranus.png'
 import iconNeptune from '/assets/images/neptune.png'
 
-export const PLANETS = [
+export const PLANET_ICONS = [
   { name: 'mercury', icon: iconMercury },
   { name: 'venus', icon: iconVenus },
   { name: 'earth', icon: iconEarth },

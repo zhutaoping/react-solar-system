@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import orbiting from '../utils/orbiting/orbiting'
-import { PLANETS } from '../constants'
+import { PLANET_ICONS } from '../constants'
 import { usePlanetStore } from '../store/PlanetStore'
 
 interface Props {
@@ -26,7 +26,7 @@ export default function MobileMenu({ expanded, sunEl, refHeader }: Props) {
   return (
     <nav className={`orbit ${expanded ? 'expanded' : 'pointer-events-none'}`}>
       <ul>
-        {PLANETS.map(p => (
+        {PLANET_ICONS.map(p => (
           <li
             className={`${expanded && 'expanded'}`}
             key={p.name}
