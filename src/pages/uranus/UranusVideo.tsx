@@ -1,9 +1,9 @@
-import uranusMedia from '/assets/images/uranus-720-tiny.webp'
+import uranusImage from '/assets/images/uranus-720-tiny.webp'
 import Video from '../../components/Video'
 
 export default function UranusVideo() {
-  const media = new Image()
-  media.src = uranusMedia
-  media.alt = 'Uranus'
-  return <Video media={media} isImage />
+  const img = new Image()
+  img.src = uranusImage
+  img.alt = 'Uranus'
+  return <Video image={img} isImage />
 }
