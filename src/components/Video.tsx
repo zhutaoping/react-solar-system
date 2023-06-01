@@ -26,7 +26,8 @@ export default function Video({
 
   useEffect(() => {
     setIsPortrait(checkPortrait)
-  }, [checkPortrait])
+    console.log('canPlay', canPlay)
+  }, [checkPortrait, canPlay])
 
   return (
     <div
@@ -50,12 +51,12 @@ export default function Video({
       {!isImage && (
         <>
           <motion.img
-            key={isPortrait.toString()}
+            key={isPortrait.toString() + 'poster'}
             variants={isPortrait ? videoFromTopVariants : videoVariants}
             initial="enter"
             animate="center"
             exit="exit"
-            className={`${canPlay ? 'hidden' : ''} `}
+            className={`${canPlay ? 'hidden' : ''}`}
             src={videoPoster}
             alt={videoPoster}
           />
@@ -78,7 +79,7 @@ export default function Video({
             exit="exit"
             className={`${
               isSun ? 'isSun h-screen object-cover portrait:h-full' : ''
-            } ${canPlay ? '' : 'hidden'}`}
+            } ${canPlay ? 'block' : 'hidden'}`}
             src={videoSrc}
             poster={videoPoster}
             autoPlay
