@@ -27,20 +27,20 @@ export default function Video({
 
   const ref = useRef<HTMLVideoElement>(null)
 
-  const bounds = ref.current?.getBoundingClientRect()
-
   useEffect(() => {
     setIsPortrait(checkPortrait)
     if (isSun) return
 
-    if (bounds) {
+    const bounds = ref.current?.getBoundingClientRect()
+
+    if (bounds && bounds.x && animationComplete) {
       const posX = bounds.x + bounds.width / 2
       const posY = bounds.y + bounds.height / 2
 
       ref.current?.style.setProperty('--x', `${posX}px`)
       ref.current?.style.setProperty('--y', `${posY}px`)
     }
-  }, [checkPortrait, canPlay, bounds, isSun, setAnimationComplete])
+  }, [checkPortrait, animationComplete, isSun])
 
   return (
     <div
