@@ -69,6 +69,10 @@ export default function Video({
             initial="enter"
             animate="center"
             exit="exit"
+            onAnimationStart={() => setAnimationComplete(false)}
+            onAnimationComplete={() => {
+              setAnimationComplete(true)
+            }}
             className={`${canPlay ? 'hidden' : ''}`}
             src={videoPoster}
             alt={videoPoster}
