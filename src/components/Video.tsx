@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import { videoFromTopVariants, videoVariants } from '../utils/animationVariants'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface Props {
   image?: HTMLImageElement
@@ -23,11 +23,24 @@ export default function Video({
   const [isPortrait, setIsPortrait] = useState(false)
   const checkPortrait = useMediaQuery('(orientation:portrait)')
   const [canPlay, setCanPlay] = useState(false)
+  const [animationComplete, setAnimationComplete] = useState(false)
+
+  const ref = useRef<HTMLVideoElement>(null)
+
+  const bounds = ref.current?.getBoundingClientRect()
 
   useEffect(() => {
     setIsPortrait(checkPortrait)
-    console.log('canPlay', canPlay)
-  }, [checkPortrait, canPlay])
+    if (isSun) return
+
+    if (bounds) {
+      const posX = bounds.x + bounds.width / 2
+      const posY = bounds.y + bounds.height / 2
+
+      ref.current?.style.setProperty('--x', `${posX}px`)
+      ref.current?.style.setProperty('--y', `${posY}px`)
+    }
+  }, [checkPortrait, canPlay, bounds, isSun])
 
   return (
     <div
@@ -70,6 +83,7 @@ export default function Video({
              ** the component with the isSmall value so that when the
              ** value changes, React will re-render the component.
              */
+            ref={ref}
             key={isPortrait.toString()}
             variants={
               isPortrait && !isSun ? videoFromTopVariants : videoVariants
@@ -77,9 +91,15 @@ export default function Video({
             initial="enter"
             animate="center"
             exit="exit"
+            onAnimationStart={() => setAnimationComplete(false)}
+            onAnimationComplete={() => {
+              setAnimationComplete(true)
+            }}
             className={`${
               isSun ? 'isSun h-screen object-cover portrait:h-full' : ''
-            } ${canPlay ? 'block' : 'hidden'}`}
+            } ${canPlay ? 'block' : 'hidden'} ${
+              animationComplete ? 'setClipPath' : ''
+            }`}
             src={videoSrc}
             poster={videoPoster}
             autoPlay

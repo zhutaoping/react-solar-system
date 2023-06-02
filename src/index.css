@@ -24,6 +24,9 @@
   .isSaturn {
     clip-path: none !important;
   }
+  .setClipPath {
+    clip-path: circle(400px at var(--x) var(--y)) !important;
+  }
 
   .stars,
   .twinkling {

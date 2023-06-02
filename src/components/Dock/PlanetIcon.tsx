@@ -25,14 +25,14 @@ export default function PlanetIcon({
   const distance = useTransform(mouseMove, val => {
     //* nullish coalescing operator: null and undefined
     //* not includes falsy: false, 0, NaN, ""(empty string)
-    // if (isXL) {
-    const bounds = ref.current?.getBoundingClientRect() ?? { y: 0, width: 0 }
+    if (isXL) {
+      const bounds = ref.current?.getBoundingClientRect() ?? { y: 0, width: 0 }
 
-    return val - bounds.y - bounds.width / 2
-    // } else {
-    // const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, height: 0 }
-    // return val - bounds.x - bounds.height / 2
-    // }
+      return val - bounds.y - bounds.width / 2
+    } else {
+      const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, height: 0 }
+      return val - bounds.x - bounds.height / 2
+    }
   })
 
   const widthSync = useTransform(distance, [-100, 0, 100], [40, 80, 40])
@@ -51,6 +51,7 @@ export default function PlanetIcon({
       transition={{ type: 'spring', stiffness: 200, damping: 15 }}
       ref={ref}
       style={{ width: isXL ? width : 40 }}
+      // style={{ width }}
       className="relative aspect-square w-10 rounded-full  "
     >
       <Link to={`${planet}`}>
