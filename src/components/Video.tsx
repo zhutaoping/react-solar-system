@@ -40,7 +40,7 @@ export default function Video({
       ref.current?.style.setProperty('--x', `${posX}px`)
       ref.current?.style.setProperty('--y', `${posY}px`)
     }
-  }, [checkPortrait, canPlay, bounds, isSun, animationComplete])
+  }, [checkPortrait, canPlay, bounds, isSun])
 
   return (
     <div
@@ -56,10 +56,6 @@ export default function Video({
           initial="enter"
           animate="center"
           exit="exit"
-          onAnimationStart={() => setAnimationComplete(false)}
-          onAnimationComplete={() => {
-            setAnimationComplete(true)
-          }}
           className={`${isSaturn ? 'isSaturn' : ''}`}
           src={image?.src}
           alt={image?.alt}
