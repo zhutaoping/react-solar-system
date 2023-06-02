@@ -25,23 +25,28 @@ export default function Video({
   const [canPlay, setCanPlay] = useState(false)
   const [animationComplete, setAnimationComplete] = useState(false)
   const [posterAnimationComplete, setPosterAnimationComplete] = useState(false)
+  // const [position, setPosition] = useState({ x: 0, y: 0 })
 
-  const ref = useRef<HTMLVideoElement>(null)
+  const refVideo = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     setIsPortrait(checkPortrait)
-    if (isSun) return
+    // if (isSun || !animationComplete) return
 
-    const bounds = ref.current?.getBoundingClientRect()
+    // let bounds = null
+    // bounds = refVideo.current?.getBoundingClientRect()
 
-    if (bounds && bounds.x && animationComplete) {
-      const posX = bounds.x + bounds.width / 2
-      const posY = bounds.y + bounds.height / 2
+    // if (bounds) {
+    //   const posX = bounds.x + bounds.width / 2
+    //   const posY = bounds.y + bounds.height / 2
+    //   console.log('posX: ', posX)
+    //   console.log('posY: ', posY)
+    //   setPosition({ x: posX, y: posY })
 
-      ref.current?.style.setProperty('--x', `${posX}px`)
-      ref.current?.style.setProperty('--y', `${posY}px`)
-    }
-  }, [checkPortrait, animationComplete, isSun])
+    //   refVideo.current?.style.setProperty('--x', `${position.x}px`)
+    //   refVideo.current?.style.setProperty('--y', `${position.y}px`)
+    // }
+  }, [checkPortrait, isSun])
 
   return (
     <div
@@ -92,7 +97,7 @@ export default function Video({
              ** the component with the isSmall value so that when the
              ** value changes, React will re-render the component.
              */
-            ref={ref}
+            ref={refVideo}
             key={isPortrait.toString()}
             variants={
               isPortrait && !isSun ? videoFromTopVariants : videoVariants
@@ -104,7 +109,7 @@ export default function Video({
             onAnimationComplete={() => {
               setAnimationComplete(true)
             }}
-            className={`${
+            className={`video ${
               isSun ? 'isSun h-screen object-cover portrait:h-full ' : ''
             } ${canPlay && posterAnimationComplete ? 'block' : 'hidden'} ${
               animationComplete ? 'setClipPath' : ''

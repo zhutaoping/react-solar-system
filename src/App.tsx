@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useMediaQuery } from './hooks/useMediaQuery'
@@ -27,12 +27,16 @@ export default function App() {
     setIsPortrait(checkPortrait)
   }, [checkPortrait])
 
-  const [ref, bounds] = useMeasure()
+  // const [ref, bounds] = useMeasure()
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!bounds) return
-    setDimensions({ height: bounds.height, width: bounds.width })
-  }, [bounds])
+    const bounds = ref.current?.getBoundingClientRect()
+
+    if (bounds) {
+      setDimensions({ height: bounds.height, width: bounds.width })
+    }
+  }, [])
 
   return (
     <div ref={ref} className="App relative">
