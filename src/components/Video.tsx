@@ -24,6 +24,7 @@ export default function Video({
   const checkPortrait = useMediaQuery('(orientation:portrait)')
   const [canPlay, setCanPlay] = useState(false)
   const [animationComplete, setAnimationComplete] = useState(false)
+  const [posterAnimationComplete, setPosterAnimationComplete] = useState(false)
 
   const ref = useRef<HTMLVideoElement>(null)
 
@@ -45,8 +46,8 @@ export default function Video({
   return (
     <div
       className={`scale-[70%] xl:scale-[80%] ${
-        isSun ? 'isSun !scale-100 portrait:rotate-90' : ''
-      } ${isSaturn ? 'isSaturn !scale-100 place-self-start' : ''} 
+        isSun ? '!scale-100 portrait:rotate-90' : ''
+      } ${isSaturn ? '!scale-100 place-self-start' : ''} 
     `}
     >
       {isImage && (
@@ -65,15 +66,19 @@ export default function Video({
         <>
           <motion.img
             key={isPortrait.toString() + 'poster'}
-            variants={isPortrait ? videoFromTopVariants : videoVariants}
+            variants={
+              isPortrait && !isSun ? videoFromTopVariants : videoVariants
+            }
             initial="enter"
             animate="center"
             exit="exit"
-            onAnimationStart={() => setAnimationComplete(false)}
+            onAnimationStart={() => setPosterAnimationComplete(false)}
             onAnimationComplete={() => {
-              setAnimationComplete(true)
+              setPosterAnimationComplete(true)
             }}
-            className={`${canPlay ? 'hidden' : ''}`}
+            className={`${
+              isSun ? 'isSun h-screen object-cover portrait:h-full ' : ''
+            } ${canPlay && posterAnimationComplete ? 'hidden' : ''}`}
             src={videoPoster}
             alt={videoPoster}
           />
@@ -100,8 +105,8 @@ export default function Video({
               setAnimationComplete(true)
             }}
             className={`${
-              isSun ? 'isSun h-screen object-cover portrait:h-full' : ''
-            } ${canPlay ? 'block' : 'hidden'} ${
+              isSun ? 'isSun h-screen object-cover portrait:h-full ' : ''
+            } ${canPlay && posterAnimationComplete ? 'block' : 'hidden'} ${
               animationComplete ? 'setClipPath' : ''
             }`}
             src={videoSrc}
