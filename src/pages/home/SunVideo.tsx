@@ -1,6 +1,7 @@
-import sunVideo from '/assets/videos/sun-clip.webm'
 import Video from '../../components/Video'
+import video from '/assets/videos/sun-clip.webm'
+import poster from '/assets/images/posters/sun-poster-720-tiny.webp'
 
 export default function SunVideo() {
-  return <Video videoSrc={sunVideo} isSun />
+  return <Video videoSrc={video} videoPoster={poster} isSun />
 }
