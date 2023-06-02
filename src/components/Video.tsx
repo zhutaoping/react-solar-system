@@ -40,7 +40,7 @@ export default function Video({
       ref.current?.style.setProperty('--x', `${posX}px`)
       ref.current?.style.setProperty('--y', `${posY}px`)
     }
-  }, [checkPortrait, canPlay, bounds, isSun])
+  }, [checkPortrait, canPlay, bounds, isSun, setAnimationComplete])
 
   return (
     <div
