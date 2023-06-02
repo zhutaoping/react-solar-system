@@ -33,7 +33,7 @@ export default function Video({
 
     const bounds = ref.current?.getBoundingClientRect()
 
-    if (bounds && animationComplete) {
+    if (bounds && bounds.x && animationComplete) {
       const posX = bounds.x + bounds.width / 2
       const posY = bounds.y + bounds.height / 2
 
