@@ -66,7 +66,7 @@ export default function Video({
             }}
             className={`${
               isSun ? 'isSun h-screen object-cover portrait:h-full ' : ''
-            } ${canPlay ? 'hidden' : ''}`}
+            } ${canPlay && posterCompleted ? 'hidden' : ''}`}
             src={videoPoster}
             alt={videoPoster}
           />
