@@ -23,8 +23,8 @@ export default function Video({
   const [isPortrait, setIsPortrait] = useState(false)
   const checkPortrait = useMediaQuery('(orientation:portrait)')
   const [canPlay, setCanPlay] = useState(false)
+  const [posterCompleted, setPosterCompleted] = useState(false)
   // const [animationComplete, setAnimationComplete] = useState(false)
-  // const [posterCompleted, setPosterCompleted] = useState(false)
 
   const refVideo = useRef<HTMLVideoElement>(null)
 
@@ -61,9 +61,9 @@ export default function Video({
             initial="enter"
             animate="center"
             exit="exit"
-            // onAnimationComplete={() => {
-            //   setPosterCompleted(true)
-            // }}
+            onAnimationComplete={() => {
+              setPosterCompleted(true)
+            }}
             className={`${
               isSun ? 'isSun h-screen object-cover portrait:h-full ' : ''
             } ${canPlay ? 'hidden' : ''}`}
@@ -94,7 +94,9 @@ export default function Video({
             // }}
             className={`video ${
               isSun ? 'isSun h-screen object-cover portrait:h-full ' : ''
-            } ${canPlay ? 'block' : 'hidden'} clip-circle-50`}
+            } ${
+              canPlay && posterCompleted ? 'block' : 'hidden'
+            } clip-circle-50`}
             src={videoSrc}
             poster={videoPoster}
             autoPlay
