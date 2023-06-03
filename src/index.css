@@ -19,13 +19,7 @@
 
 @layer components {
   .isSun {
-    clip-path: circle(950px at 0px 100px) !important;
-  }
-  .isSaturn {
-    clip-path: none !important;
-  }
-  .setClipPath {
-    clip-path: circle(50%);
+    clip-path: circle(110% at 0px 200px) !important;
   }
 
   .stars,
@@ -59,5 +53,14 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
+  }
+}
+
+@layer utilities {
+  .clip-path-none {
+    clip-path: none;
+  }
+  .clip-circle-50 {
+    clip-path: circle(50%);
   }
 }

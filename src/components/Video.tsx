@@ -23,29 +23,13 @@ export default function Video({
   const [isPortrait, setIsPortrait] = useState(false)
   const checkPortrait = useMediaQuery('(orientation:portrait)')
   const [canPlay, setCanPlay] = useState(false)
-  const [animationComplete, setAnimationComplete] = useState(false)
-  const [posterAnimationComplete, setPosterAnimationComplete] = useState(false)
-  // const [position, setPosition] = useState({ x: 0, y: 0 })
+  // const [animationComplete, setAnimationComplete] = useState(false)
+  const [posterCompleted, setPosterCompleted] = useState(false)
 
   const refVideo = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     setIsPortrait(checkPortrait)
-    // if (isSun || !animationComplete) return
-
-    // let bounds = null
-    // bounds = refVideo.current?.getBoundingClientRect()
-
-    // if (bounds) {
-    //   const posX = bounds.x + bounds.width / 2
-    //   const posY = bounds.y + bounds.height / 2
-    //   console.log('posX: ', posX)
-    //   console.log('posY: ', posY)
-    //   setPosition({ x: posX, y: posY })
-
-    //   refVideo.current?.style.setProperty('--x', `${position.x}px`)
-    //   refVideo.current?.style.setProperty('--y', `${position.y}px`)
-    // }
   }, [checkPortrait, isSun])
 
   return (
@@ -62,7 +46,7 @@ export default function Video({
           initial="enter"
           animate="center"
           exit="exit"
-          className={`${isSaturn ? 'isSaturn' : ''}`}
+          className={``}
           src={image?.src}
           alt={image?.alt}
         />
@@ -77,13 +61,12 @@ export default function Video({
             initial="enter"
             animate="center"
             exit="exit"
-            onAnimationStart={() => setPosterAnimationComplete(false)}
             onAnimationComplete={() => {
-              setPosterAnimationComplete(true)
+              setPosterCompleted(true)
             }}
             className={`${
               isSun ? 'isSun h-screen object-cover portrait:h-full ' : ''
-            } ${canPlay && posterAnimationComplete ? 'hidden' : ''}`}
+            } ${canPlay ? 'hidden' : ''}`}
             src={videoPoster}
             alt={videoPoster}
           />
@@ -105,15 +88,13 @@ export default function Video({
             initial="enter"
             animate="center"
             exit="exit"
-            onAnimationStart={() => setAnimationComplete(false)}
-            onAnimationComplete={() => {
-              setAnimationComplete(true)
-            }}
+            // onAnimationStart={() => setAnimationComplete(false)}
+            // onAnimationComplete={() => {
+            //   setAnimationComplete(true)
+            // }}
             className={`video ${
               isSun ? 'isSun h-screen object-cover portrait:h-full ' : ''
-            } ${canPlay && posterAnimationComplete ? 'block' : 'hidden'} ${
-              animationComplete ? 'setClipPath' : ''
-            }`}
+            } ${canPlay ? 'block' : 'hidden'} clip-circle-50`}
             src={videoSrc}
             poster={videoPoster}
             autoPlay
