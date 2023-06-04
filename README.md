@@ -16,7 +16,7 @@
 - [x] On a large desktop viewport, the Dock sidebar will be displayed.
 - [x] On a smaller desktop viewport or a landscape-oriented mobile device,
       the navbar will be displayed.
-- [x] When a mobile device in portrait mode, a collapsible menu with orbiting icon animation will be displayed.
+- [x] When a mobile device is in portrait mode, a collapsible menu with orbiting icon animation will be displayed.
 - [x] Implement page transitions with the help of Framer-motion
 - [x] Welcome to my tailwind CSS hell!
 
