@@ -1,7 +1,6 @@
 # Solar System
 
-網頁動起來!
-Web animation for fun!
+網頁動起來! / Web animation for fun!
 
 ## 連結 / Links
 
@@ -11,7 +10,7 @@ Web animation for fun!
 
 - [x] 桌機大視圖時，將顯示 Dock 側欄
 - [x] 桌機非大視圖或行動裝置橫向時，將顯示導航列
-- [x] 行動裝置直向時，將顯示軌道動畫隱藏選單
+- [x] 行動裝置直向時，將顯示隱藏選單之軌道動畫
 - [x] 借助 Framer-motion, 實現網頁轉場效果
 - [x] 響應式設計，手機，平板，桌機皆可瀏覽
 - [x] On a large desktop viewport, the Dock sidebar will be displayed.
